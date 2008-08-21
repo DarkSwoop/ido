@@ -1,0 +1,6 @@
+*.log
+db/schema.rb
+config/database.yml
+spec/spec.opts
+tmp/*
+db/*.sqlite3

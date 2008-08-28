@@ -2,5 +2,5 @@
 db/schema.rb
 config/database.yml
 spec/spec.opts
-tmp/*
+tmp/**/*
 db/*.sqlite3

@@ -44,7 +44,6 @@ class TrackableItemsController < ApplicationController
 
     respond_to do |format|
       if @trackable_item.save
-        flash[:notice] = 'TrackableItem was successfully created.'
         format.html { redirect_to(@trackable_item) }
         format.xml  { render :xml => @trackable_item, :status => :created, :location => @trackable_item }
       else
@@ -61,7 +60,6 @@ class TrackableItemsController < ApplicationController
 
     respond_to do |format|
       if @trackable_item.update_attributes(params[:trackable_item])
-        flash[:notice] = 'TrackableItem was successfully updated.'
         format.html { redirect_to(@trackable_item) }
         format.xml  { head :ok }
       else
@@ -76,7 +74,7 @@ class TrackableItemsController < ApplicationController
   def destroy
     @trackable_item = TrackableItem.find(params[:id])
     @trackable_item.destroy
-
+    
     respond_to do |format|
       format.html { redirect_to(trackable_items_url) }
       format.xml  { head :ok }

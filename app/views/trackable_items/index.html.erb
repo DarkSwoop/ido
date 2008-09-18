@@ -6,6 +6,7 @@
 
 <% for trackable_item in @trackable_items %>
   <tr>
+    <td><%= trackable_item.name %></td>
     <td><%= link_to 'Show', trackable_item %></td>
     <td><%= link_to 'Edit', edit_trackable_item_path(trackable_item) %></td>
     <td><%= link_to 'Destroy', trackable_item, :confirm => 'Are you sure?', :method => :delete %></td>

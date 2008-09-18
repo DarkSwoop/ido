@@ -1,2 +1,11 @@
-<h1>TrackableItems#new</h1>
-<p>Find me in app/views/trackable_items/new.html.erb</p>
+<h1>New trackable_item</h1>
+
+<% form_for(@trackable_item) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', trackable_items_path %>

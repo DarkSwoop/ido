@@ -1,8 +1,8 @@
 class CreateTrackableItems < ActiveRecord::Migration
   def self.up
     create_table :trackable_items do |t|
-      t.string :name, :null => false
-
+      t.string :name
+      
       t.timestamps
     end
   end

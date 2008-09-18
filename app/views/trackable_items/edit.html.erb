@@ -1,2 +1,12 @@
-<h1>TrackableItems#edit</h1>
-<p>Find me in app/views/trackable_items/edit.html.erb</p>
+<h1>Editing trackable_item</h1>
+
+<% form_for(@trackable_item) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @trackable_item %> |
+<%= link_to 'Back', trackable_items_path %>

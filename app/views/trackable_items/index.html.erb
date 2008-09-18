@@ -1,2 +1,18 @@
-<h1>TrackableItems#index</h1>
-<p>Find me in app/views/trackable_items/index.html.erb</p>
+<h1>Listing trackable_items</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for trackable_item in @trackable_items %>
+  <tr>
+    <td><%= link_to 'Show', trackable_item %></td>
+    <td><%= link_to 'Edit', edit_trackable_item_path(trackable_item) %></td>
+    <td><%= link_to 'Destroy', trackable_item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New trackable_item', new_trackable_item_path %>

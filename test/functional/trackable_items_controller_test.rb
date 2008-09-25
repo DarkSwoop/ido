@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class TrackableItemsControllerTest < ActionController::TestCase
-  def setup
+  setup do
     @trackable_item = Factory(:trackable_item)
     @trackable_items = TrackableItem.all
   end
@@ -14,4 +14,24 @@ class TrackableItemsControllerTest < ActionController::TestCase
     resource.update.flash  = nil
     resource.destroy.flash = nil
   end
+  
+  context "getting the index action" do
+    should "return the root elements" do
+      item1 = Factory(:trackable_item, :parent => nil)
+      item2 = Factory(:trackable_item, :parent => nil)
+      item3 = Factory(:trackable_item, :parent => item1)
+      
+      # TrackableItem.should_receive(:root_elements).and_return([item1, item2])
+      get :index
+      # assert_equal([item1, item2], assigns(:trackable_items))
+      assert assigns(:trackable_items).include?(item1)
+      assert assigns(:trackable_items).include?(item2)
+      assert !assigns(:trackable_items).include?(item3)
+      assert @response.body.match(/#{item1.name}/)
+      assert @response.body.match(/#{item2.name}/)
+    end
+  end
+  
+  
+  
 end

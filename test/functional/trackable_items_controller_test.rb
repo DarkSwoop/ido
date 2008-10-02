@@ -21,9 +21,8 @@ class TrackableItemsControllerTest < ActionController::TestCase
       item2 = Factory(:trackable_item, :parent => nil)
       item3 = Factory(:trackable_item, :parent => item1)
       
-      # TrackableItem.should_receive(:root_elements).and_return([item1, item2])
       get :index
-      # assert_equal([item1, item2], assigns(:trackable_items))
+      
       assert assigns(:trackable_items).include?(item1)
       assert assigns(:trackable_items).include?(item2)
       assert !assigns(:trackable_items).include?(item3)

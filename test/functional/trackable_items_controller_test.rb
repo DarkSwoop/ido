@@ -18,6 +18,21 @@ class TrackableItemsControllerTest < ActionController::TestCase
     end
   end 
 
+  context "request to show" do
+
+    should "display the children of current element" do
+      parent_item = Factory(:trackable_item, :parent => nil)
+      child_element = Factory(:trackable_item, :parent => parent_item)
+
+      get :show, :id => parent_item.id
+
+      assert assigns(:trackable_item) == parent_item 
+      assert @response.body.match(/#{child_element.name}/)
+      assert @response.body.match(/#{parent_item.name}/)
+    end
+
+  end
+
   context "getting the index action" do
     should "return the root elements" do
       item1 = Factory(:trackable_item, :parent => nil)

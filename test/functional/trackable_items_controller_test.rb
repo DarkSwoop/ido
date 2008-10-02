@@ -1,20 +1,23 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class TrackableItemsControllerTest < ActionController::TestCase
-  setup do
-    @trackable_item = Factory(:trackable_item)
-    @trackable_items = TrackableItem.all
-  end
 
-  should_be_restful do |resource|
-    resource.create.params = { :name => 'blah blah blah'}
-    resource.update.params = { :name => "changed" }
+  context "testing restfulness of controller" do
+    setup do
+      @trackable_item = Factory(:trackable_item)
+      @trackable_items = TrackableItem.all
+    end
 
-    resource.create.flash  = nil
-    resource.update.flash  = nil
-    resource.destroy.flash = nil
-  end
-  
+    should_be_restful do |resource|
+      resource.create.params = { :name => 'blah blah blah'}
+      resource.update.params = { :name => "changed" }
+
+      resource.create.flash  = nil
+      resource.update.flash  = nil
+      resource.destroy.flash = nil
+    end
+  end 
+
   context "getting the index action" do
     should "return the root elements" do
       item1 = Factory(:trackable_item, :parent => nil)

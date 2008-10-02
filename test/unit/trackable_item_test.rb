@@ -9,5 +9,7 @@ class TrackableItemTest < ActiveSupport::TestCase
   end
       
   should_require_attributes :name
+  
+  # noch genauer testen
   should_have_class_methods :root_elements
 end

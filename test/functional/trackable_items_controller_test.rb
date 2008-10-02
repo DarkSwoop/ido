@@ -25,8 +25,10 @@ class TrackableItemsControllerTest < ActionController::TestCase
       child_element = Factory(:trackable_item, :parent => parent_item)
 
       get :show, :id => parent_item.id
-
-      assert assigns(:trackable_item) == parent_item 
+      
+      # assert_equal
+      assert assigns(:trackable_item) == parent_item
+      # assert_match
       assert @response.body.match(/#{child_element.name}/)
       assert @response.body.match(/#{parent_item.name}/)
     end

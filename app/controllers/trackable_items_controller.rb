@@ -2,7 +2,7 @@ class TrackableItemsController < ApplicationController
   # GET /trackable_items
   # GET /trackable_items.xml
   def index
-    @trackable_items = TrackableItem.find(:all, :conditions => {:parent_id => nil})
+    @trackable_items = TrackableItem.root_elements
     
     respond_to do |format|
       format.html # index.html.erb
